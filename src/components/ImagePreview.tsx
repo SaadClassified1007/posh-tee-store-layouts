@@ -12,13 +12,21 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({ imageUrl, theme, className 
   const themeClasses = {
     1: "theme1-card",
     2: "theme2-card",
-    3: "theme3-card"
+    3: "theme3-card bg-white/80 border-gray-200"
+  };
+  
+  const placeholderClasses = {
+    1: "text-white/70",
+    2: "text-white/70",
+    3: "text-gray-500"
   };
   
   if (!imageUrl) {
     return (
       <div className={`image-preview ${themeClasses[theme]} flex items-center justify-center p-6 ${className}`}>
-        <p className="text-center text-sm opacity-70 font-medium">Image preview will appear here</p>
+        <p className={`text-center text-sm opacity-70 font-medium ${placeholderClasses[theme]}`}>
+          Image preview will appear here
+        </p>
       </div>
     );
   }

@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -153,20 +152,19 @@
   @apply text-white rounded-xl px-5 py-2.5 font-medium shadow-lg transition-all duration-300 hover:scale-105;
 }
 
-/* Theme 3 - Subtle Orange */
+/* Theme 3 - White T-shirt Background */
 .theme3 {
-  @apply bg-theme3-bg text-theme3-text;
+  @apply bg-theme3-bg text-gray-800;
   background: url('/lovable-uploads/00a1262a-20de-4150-ba2e-1455f8933c44.png') no-repeat center center fixed;
   background-size: cover;
 }
 
 .theme3-card {
-  @apply bg-white/90 rounded-lg shadow-lg border border-theme3-accent/20 transition-all duration-300 backdrop-blur-sm;
+  @apply bg-white/90 rounded-lg shadow-lg border border-gray-200 transition-all duration-300 backdrop-blur-sm;
 }
 
 .theme3-button {
-  background: linear-gradient(135deg, #FEC6A1 0%, #FDE1D3 100%);
-  @apply text-theme3-text rounded-lg px-5 py-2.5 font-medium shadow-sm hover:shadow-md transition-all duration-300;
+  @apply bg-gray-800 text-white rounded-lg px-5 py-2.5 font-medium shadow-sm hover:shadow-md hover:bg-gray-700 transition-all duration-300;
 }
 
 /* Transition Styles */

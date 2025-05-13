@@ -16,7 +16,19 @@ const UploadArea: React.FC<UploadAreaProps> = ({ onImageUpload, theme, className
   const themeClasses = {
     1: "theme1-card border-theme1-accent hover:border-theme1-accent",
     2: "theme2-card hover:border-theme2-accent",
-    3: "theme3-card hover:border-theme3-accent hover:shadow-md"
+    3: "theme3-card hover:border-gray-300 hover:shadow-md"
+  };
+  
+  const buttonClasses = {
+    1: "theme1-button",
+    2: "theme2-button",
+    3: "bg-gray-800 text-white rounded-lg px-4 py-2 font-medium hover:bg-gray-700 transition-all duration-300"
+  };
+  
+  const iconClasses = {
+    1: "text-theme1-accent animate-pulse",
+    2: "text-theme2-accent animate-pulse",
+    3: "text-gray-800"
   };
   
   const handleButtonClick = () => {
@@ -122,40 +134,20 @@ const UploadArea: React.FC<UploadAreaProps> = ({ onImageUpload, theme, className
         aria-label="Upload image"
       />
       
-      <div className="flex flex-col items-center justify-center space-y-4">
-        {theme === 1 && (
-          <Upload size={48} className="text-theme1-accent animate-pulse" />
-        )}
-        {theme === 2 && (
-          <Upload size={48} className="text-theme2-accent animate-pulse" />
-        )}
-        {theme === 3 && (
-          <Upload size={48} className="text-theme3-accent" />
-        )}
+      <div className="flex flex-col items-center justify-center space-y-4 p-4">
+        <Upload size={48} className={iconClasses[theme]} />
         
-        <p className="text-center text-sm font-medium">
+        <p className={`text-center text-sm font-medium ${theme === 3 ? 'text-gray-800' : ''}`}>
           Square or portrait images only<br />(jpg, jpeg, png, webp, svg)
         </p>
         
-        <p className="text-center text-xs text-opacity-70">
+        <p className={`text-center text-xs text-opacity-70 ${theme === 3 ? 'text-gray-600' : ''}`}>
           Drag & drop or click to upload
         </p>
         
-        {theme === 1 && (
-          <button className="theme1-button">
-            Upload Image
-          </button>
-        )}
-        {theme === 2 && (
-          <button className="theme2-button">
-            Upload Image
-          </button>
-        )}
-        {theme === 3 && (
-          <button className="theme3-button">
-            Upload Image
-          </button>
-        )}
+        <button className={buttonClasses[theme]}>
+          Upload Image
+        </button>
       </div>
     </div>
   );

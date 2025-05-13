@@ -16,13 +16,13 @@ const TextInput: React.FC<TextInputProps> = ({ theme, className }) => {
   const themeClasses = {
     1: "theme1-card",
     2: "theme2-card",
-    3: "theme3-card"
+    3: "theme3-card bg-white/80 border-gray-200"
   };
   
   const textareaClasses = {
     1: "bg-theme1-bg/60 border border-theme1-accent/30 text-theme1-text focus:ring-theme1-accent/50",
     2: "bg-white/10 border border-white/20 text-theme2-text focus:ring-theme2-accent/50",
-    3: "bg-white border border-theme3-accent/20 text-theme3-text focus:ring-theme3-accent/30"
+    3: "bg-white/90 border border-gray-300 text-gray-800 focus:ring-gray-300"
   };
   
   const handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -47,7 +47,7 @@ const TextInput: React.FC<TextInputProps> = ({ theme, className }) => {
         placeholder="Enter your custom text here..."
         value={text}
         onChange={handleTextChange}
-        style={{ resize: "none", minHeight: `${LINE_HEIGHT * 3}px` }}
+        style={{ resize: "none", minHeight: `${LINE_HEIGHT * 3}px`, maxHeight: `${LINE_HEIGHT * 3}px` }}
         rows={3}
         maxLength={150}
       />

@@ -96,7 +96,8 @@ const Layout2: React.FC<Layout2Props> = ({ imageUrl, onImageUpload, onLayoutChan
             </div>
             
             <div className="mt-5">
-              <TextInput theme={2} className="w-full" />
+              <h2 className="text-xl font-semibold text-white mb-3 text-center font-montserrat tracking-wider">CUSTOMIZE</h2>
+              <TextInput theme={2} className="w-full max-h-44" />
             </div>
             
             <div className="mt-5 flex justify-center">
