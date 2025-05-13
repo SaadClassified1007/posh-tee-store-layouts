@@ -12,17 +12,19 @@ interface Layout3Props {
 const Layout3: React.FC<Layout3Props> = ({ imageUrl, onImageUpload }) => {
   return (
     <div className="theme3 min-h-screen w-full py-8 px-4 sm:px-6 lg:px-8 flex flex-col">
-      <div className="container mx-auto">
-        <div className="flex justify-center mb-12">
+      <div className="container mx-auto max-w-7xl">
+        <div className="flex justify-center mb-8">
           <h1 className="text-3xl font-bold bg-gradient-to-r from-orange-500 to-theme3-accent bg-clip-text text-transparent">
             POD T-shirt Store
           </h1>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <div className="space-y-8">
-            <div className="flex flex-col md:flex-row gap-8">
-              <div className="flex-1">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+          {/* Left section - Upload and Form */}
+          <div className="md:col-span-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <h2 className="text-xl font-semibold mb-4 text-center">UPLOAD</h2>
                 <UploadArea 
                   onImageUpload={onImageUpload} 
                   theme={3} 
@@ -30,44 +32,46 @@ const Layout3: React.FC<Layout3Props> = ({ imageUrl, onImageUpload }) => {
                 />
               </div>
               
-              <div className="flex-1">
+              <div>
+                <h2 className="text-xl font-semibold mb-4 text-center">CUSTOMIZE</h2>
                 <CustomizationForm 
                   theme={3} 
-                  className="h-full"
+                  className="w-full"
                 />
               </div>
             </div>
             
-            <div className="theme3-card p-6">
-              <p className="text-center mb-4">
-                Add your custom text or message here
-              </p>
-              <textarea 
-                className="w-full p-4 border border-theme3-accent/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-theme3-accent/50 min-h-[100px]"
-                placeholder="Enter your custom text here..."
-              ></textarea>
+            <div className="mt-6">
+              <div className="theme3-card p-6">
+                <p className="text-center mb-4 font-medium">
+                  Add your custom text or message here
+                </p>
+                <textarea 
+                  className="w-full p-4 border border-theme3-accent/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-theme3-accent/50 min-h-[100px]"
+                  placeholder="Enter your custom text here..."
+                ></textarea>
+              </div>
             </div>
           </div>
           
-          <div className="flex flex-col items-center">
-            <div className="mb-6 text-center">
-              <h2 className="text-xl font-semibold mb-2">PREVIEW</h2>
-              <p className="text-sm text-gray-500">Here's how your design will look</p>
-            </div>
-            
-            <ImagePreview 
-              imageUrl={imageUrl} 
-              theme={3} 
-              className="w-full max-w-md shadow-xl"
-            />
-            
-            <div className="mt-8 flex justify-center gap-4">
-              <button className="theme3-button">
-                Save Design
-              </button>
-              <button className="theme3-button">
-                Add to Cart
-              </button>
+          {/* Right section - Preview */}
+          <div className="md:col-span-4">
+            <div className="sticky top-8">
+              <h2 className="text-xl font-semibold mb-4 text-center">PREVIEW</h2>
+              <ImagePreview 
+                imageUrl={imageUrl} 
+                theme={3} 
+                className="w-full aspect-[3/4]"
+              />
+              
+              <div className="mt-6 flex justify-center gap-4">
+                <button className="theme3-button">
+                  Save Design
+                </button>
+                <button className="theme3-button">
+                  Add to Cart
+                </button>
+              </div>
             </div>
           </div>
         </div>

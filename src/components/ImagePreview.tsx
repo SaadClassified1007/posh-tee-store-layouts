@@ -1,5 +1,6 @@
 
 import React from "react";
+import { AspectRatio } from "./ui/aspect-ratio";
 
 interface ImagePreviewProps {
   imageUrl: string | null;
@@ -24,11 +25,13 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({ imageUrl, theme, className 
 
   return (
     <div className={`image-preview ${themeClasses[theme]} p-2 ${className} animate-fade-in`}>
-      <img 
-        src={imageUrl} 
-        alt="T-shirt Preview" 
-        className="max-h-[400px] w-auto object-contain"
-      />
+      <div className="h-full flex items-center justify-center">
+        <img 
+          src={imageUrl} 
+          alt="T-shirt Preview" 
+          className="max-h-[400px] w-auto object-contain"
+        />
+      </div>
     </div>
   );
 };

@@ -12,30 +12,37 @@ interface Layout1Props {
 const Layout1: React.FC<Layout1Props> = ({ imageUrl, onImageUpload }) => {
   return (
     <div className="theme1 min-h-screen w-full py-8 px-4 sm:px-6 lg:px-8 flex flex-col">
-      <div className="container mx-auto">
+      <div className="container mx-auto max-w-7xl">
         <div className="flex justify-center mb-8">
           <h1 className="text-3xl font-bold bg-gradient-to-r from-theme1-accent to-blue-400 bg-clip-text text-transparent">
             POD T-shirt Store
           </h1>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div>
-            <UploadArea 
-              onImageUpload={onImageUpload} 
-              theme={1} 
-              className="w-full aspect-square mb-6"
-            />
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+          {/* Left section - Upload and Customization */}
+          <div className="md:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="flex flex-col">
+              <UploadArea 
+                onImageUpload={onImageUpload} 
+                theme={1} 
+                className="w-full aspect-square mb-6"
+              />
+            </div>
             
-            <CustomizationForm theme={1} className="w-full" />
+            <div className="flex flex-col">
+              <CustomizationForm theme={1} className="w-full h-full" />
+            </div>
           </div>
           
-          <div className="flex flex-col">
-            <div className="h-full flex items-center justify-center">
+          {/* Right section - Preview */}
+          <div className="md:col-span-4">
+            <div className="sticky top-8">
+              <h2 className="text-xl font-semibold text-theme1-text mb-4 text-center">Preview</h2>
               <ImagePreview 
                 imageUrl={imageUrl} 
                 theme={1}
-                className="w-full h-full max-h-[600px]"
+                className="w-full h-auto aspect-[3/4]"
               />
             </div>
           </div>

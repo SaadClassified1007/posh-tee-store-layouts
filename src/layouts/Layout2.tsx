@@ -12,64 +12,76 @@ interface Layout2Props {
 const Layout2: React.FC<Layout2Props> = ({ imageUrl, onImageUpload }) => {
   return (
     <div className="theme2 min-h-screen w-full py-8 px-4 sm:px-6 lg:px-8 flex flex-col">
-      <div className="container mx-auto">
-        <div className="flex justify-center mb-12">
+      <div className="container mx-auto max-w-7xl">
+        <div className="flex justify-center mb-8">
           <h1 className="text-3xl font-bold bg-gradient-to-r from-theme2-accent to-theme2-secondary bg-clip-text text-transparent">
             POD T-shirt Store
           </h1>
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div>
-            <h2 className="text-xl font-semibold text-white mb-4">HEIGHT</h2>
-            <div className="theme2-card p-4 mb-6">
-              <input
-                type="text"
-                className="bg-white/10 border border-white/20 rounded-xl px-3 py-2 text-theme2-text w-full focus:outline-none focus:ring-2 focus:ring-theme2-accent/50"
-                placeholder="Enter height"
-              />
-            </div>
-            
-            <h2 className="text-xl font-semibold text-white mb-4">WEIGHT</h2>
-            <div className="theme2-card p-4 mb-6">
-              <input
-                type="text"
-                className="bg-white/10 border border-white/20 rounded-xl px-3 py-2 text-theme2-text w-full focus:outline-none focus:ring-2 focus:ring-theme2-accent/50"
-                placeholder="Enter weight"
-              />
-            </div>
-            
-            <h2 className="text-xl font-semibold text-white mb-4">BODY TYPE</h2>
-            <div className="theme2-card p-4">
-              <input
-                type="text"
-                className="bg-white/10 border border-white/20 rounded-xl px-3 py-2 text-theme2-text w-full focus:outline-none focus:ring-2 focus:ring-theme2-accent/50"
-                placeholder="Enter body type"
-              />
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          {/* Left section - Form Fields */}
+          <div className="lg:col-span-4">
+            <div className="space-y-6">
+              <div>
+                <h2 className="text-xl font-semibold text-white mb-4">HEIGHT</h2>
+                <div className="theme2-card p-4">
+                  <input
+                    type="text"
+                    className="bg-white/10 border border-white/20 rounded-xl px-3 py-2 text-theme2-text w-full focus:outline-none focus:ring-2 focus:ring-theme2-accent/50"
+                    placeholder="Enter height"
+                  />
+                </div>
+              </div>
+              
+              <div>
+                <h2 className="text-xl font-semibold text-white mb-4">WEIGHT</h2>
+                <div className="theme2-card p-4">
+                  <input
+                    type="text"
+                    className="bg-white/10 border border-white/20 rounded-xl px-3 py-2 text-theme2-text w-full focus:outline-none focus:ring-2 focus:ring-theme2-accent/50"
+                    placeholder="Enter weight"
+                  />
+                </div>
+              </div>
+              
+              <div>
+                <h2 className="text-xl font-semibold text-white mb-4">BODY TYPE</h2>
+                <div className="theme2-card p-4">
+                  <input
+                    type="text"
+                    className="bg-white/10 border border-white/20 rounded-xl px-3 py-2 text-theme2-text w-full focus:outline-none focus:ring-2 focus:ring-theme2-accent/50"
+                    placeholder="Enter body type"
+                  />
+                </div>
+              </div>
             </div>
           </div>
           
-          <div className="lg:col-span-2">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 h-full">
-              <div className="h-full flex items-center justify-center">
+          {/* Right section - Upload and Preview */}
+          <div className="lg:col-span-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <h2 className="text-xl font-semibold text-white mb-4 text-center">UPLOAD</h2>
                 <UploadArea 
                   onImageUpload={onImageUpload} 
                   theme={2} 
-                  className="w-full h-full"
+                  className="w-full aspect-square"
                 />
               </div>
               
-              <div className="h-full flex items-center justify-center">
+              <div>
+                <h2 className="text-xl font-semibold text-white mb-4 text-center">PREVIEW</h2>
                 <ImagePreview 
                   imageUrl={imageUrl} 
                   theme={2} 
-                  className="w-full h-full"
+                  className="w-full aspect-[3/4]"
                 />
               </div>
             </div>
             
-            <div className="mt-8 flex justify-center">
-              <div className="theme2-card p-6 max-w-2xl w-full">
+            <div className="mt-8">
+              <div className="theme2-card p-6">
                 <p className="text-center text-sm mb-4">
                   Our AI will generate the perfect T-shirt based on your measurements
                 </p>

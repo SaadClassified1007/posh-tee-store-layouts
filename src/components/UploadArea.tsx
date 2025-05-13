@@ -35,7 +35,8 @@ const UploadArea: React.FC<UploadAreaProps> = ({ onImageUpload, theme, className
         return;
       }
       
-      const img = new Image();
+      // Fix: Don't use 'new Image()' with the 'new' keyword
+      const img = document.createElement('img') as HTMLImageElement;
       const objectUrl = URL.createObjectURL(file);
       
       img.onload = () => {
