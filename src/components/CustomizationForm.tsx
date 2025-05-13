@@ -1,12 +1,31 @@
-
 import React from "react";
+import { useForm } from "react-hook-form";
 
 interface CustomizationFormProps {
   theme: 1 | 2 | 3;
   className?: string;
 }
 
+interface FormData {
+  height: string;
+  weight: string;
+  bodyType: string;
+}
+
 const CustomizationForm: React.FC<CustomizationFormProps> = ({ theme, className }) => {
+  const { register, handleSubmit, formState: { errors } } = useForm<FormData>({
+    defaultValues: {
+      height: "180cm",
+      weight: "80kg",
+      bodyType: "Athletic"
+    }
+  });
+
+  const onSubmit = (data: FormData) => {
+    // Handle form submission - keeping functionality the same
+    console.log(data);
+  };
+  
   const themeClasses = {
     1: "theme1-card space-y-4",
     2: "theme2-card space-y-5",
@@ -25,18 +44,25 @@ const CustomizationForm: React.FC<CustomizationFormProps> = ({ theme, className 
     3: "block text-theme3-text font-medium"
   };
 
+  const errorClasses = {
+    1: "text-red-500 text-sm mt-1",
+    2: "text-red-400 text-sm mt-1",
+    3: "text-red-600 text-sm mt-1"
+  };
+
   return (
-    <div className={`${themeClasses[theme]} p-6 ${className}`}>
+    <form onSubmit={handleSubmit(onSubmit)} className={`${themeClasses[theme]} p-6 ${className}`}>
       <div>
         <label className={labelClasses[theme]} htmlFor="height">
           HEIGHT
         </label>
         <input
-          type="text"
           id="height"
           className={inputClasses[theme]}
           placeholder="Enter height"
+          {...register("height", { required: "Height is required" })}
         />
+        {errors.height && <p className={errorClasses[theme]}>{errors.height.message}</p>}
       </div>
       
       <div>
@@ -44,11 +70,12 @@ const CustomizationForm: React.FC<CustomizationFormProps> = ({ theme, className 
           WEIGHT
         </label>
         <input
-          type="text"
           id="weight"
           className={inputClasses[theme]}
           placeholder="Enter weight"
+          {...register("weight", { required: "Weight is required" })}
         />
+        {errors.weight && <p className={errorClasses[theme]}>{errors.weight.message}</p>}
       </div>
       
       <div>
@@ -56,13 +83,14 @@ const CustomizationForm: React.FC<CustomizationFormProps> = ({ theme, className 
           BODY TYPE
         </label>
         <input
-          type="text"
           id="bodyType"
           className={inputClasses[theme]}
           placeholder="Enter body type"
+          {...register("bodyType", { required: "Body type is required" })}
         />
+        {errors.bodyType && <p className={errorClasses[theme]}>{errors.bodyType.message}</p>}
       </div>
-    </div>
+    </form>
   );
 };
 
