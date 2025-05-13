@@ -77,10 +77,41 @@ const UploadArea: React.FC<UploadAreaProps> = ({ onImageUpload, theme, className
     e.target.value = "";
   };
 
+  // Handle drag and drop
+  const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    setIsDragging(false);
+  };
+
+  const handleDrop = async (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    setIsDragging(false);
+    
+    const files = e.dataTransfer.files;
+    if (!files || files.length === 0) return;
+    
+    const file = files[0];
+    const isValid = await validateImage(file);
+    
+    if (isValid) {
+      const imageUrl = URL.createObjectURL(file);
+      onImageUpload(file, imageUrl);
+      toast.success("Image uploaded successfully");
+    }
+  };
+
   return (
     <div 
-      className={`upload-area ${themeClasses[theme]} min-h-[200px] min-w-[200px] p-6 ${className}`}
+      className={`upload-area ${themeClasses[theme]} min-h-[200px] min-w-[200px] ${isDragging ? 'border-dashed border-2' : ''} ${className}`}
       onClick={handleButtonClick}
+      onDragOver={handleDragOver}
+      onDragLeave={handleDragLeave}
+      onDrop={handleDrop}
     >
       <input
         type="file"
@@ -104,6 +135,10 @@ const UploadArea: React.FC<UploadAreaProps> = ({ onImageUpload, theme, className
         
         <p className="text-center text-sm font-medium">
           Square or portrait images only<br />(jpg, jpeg, png, webp, svg)
+        </p>
+        
+        <p className="text-center text-xs text-opacity-70">
+          Drag & drop or click to upload
         </p>
         
         {theme === 1 && (

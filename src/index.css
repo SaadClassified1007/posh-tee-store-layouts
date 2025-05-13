@@ -1,8 +1,9 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;500;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
 
 @layer base {
   :root {
@@ -155,10 +156,12 @@
 /* Theme 3 - Subtle Orange */
 .theme3 {
   @apply bg-theme3-bg text-theme3-text;
+  background: url('/lovable-uploads/00a1262a-20de-4150-ba2e-1455f8933c44.png') no-repeat center center fixed;
+  background-size: cover;
 }
 
 .theme3-card {
-  @apply bg-white rounded-lg shadow border border-theme3-accent/20 transition-all duration-300;
+  @apply bg-white/90 rounded-lg shadow-lg border border-theme3-accent/20 transition-all duration-300 backdrop-blur-sm;
 }
 
 .theme3-button {
@@ -289,6 +292,14 @@
 /* Font utilities */
 .font-montserrat {
   font-family: 'Montserrat', sans-serif;
+}
+
+.font-playfair {
+  font-family: 'Playfair Display', serif;
+}
+
+.font-cormorant {
+  font-family: 'Cormorant Garamond', serif;
 }
 
 .font-inter {
