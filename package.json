@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "ROLLUP_NATIVE_DIST=0 vite build",
+    "build": "ROLLUP_NATIVE_DIST=0 vite build --config vite.config.js",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview"
@@ -86,7 +86,8 @@
   },
   "overrides": {
     "rollup": {
-      "@rollup/rollup-linux-x64-gnu": "npm:@rollup/rollup-win32-x64-msvc"
+      "@rollup/rollup-linux-x64-gnu": "npm:@rollup/rollup-win32-x64-msvc",
+      "rollup": "3.28.1"
     }
   }
 }
