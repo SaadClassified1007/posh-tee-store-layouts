@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,24 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Custom theme colors
+				theme1: {
+					bg: '#0A0A0A',
+					accent: '#1EAEDB', 
+					text: '#FFFFFF'
+				},
+				theme2: {
+					bg: '#0F172A',
+					accent: '#0EA5E9',
+					secondary: '#8B5CF6',
+					text: '#FFFFFF'
+				},
+				theme3: {
+					bg: '#F9F9F9',
+					accent: '#FEC6A1',
+					secondary: '#FDE1D3',
+					text: '#333333'
 				}
 			},
 			borderRadius: {
@@ -84,11 +103,55 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'slide-left': {
+					'0%': { transform: 'translateX(0)' },
+					'100%': { transform: 'translateX(-100%)' }
+				},
+				'slide-right': {
+					'0%': { transform: 'translateX(-100%)' },
+					'100%': { transform: 'translateX(0)' }
+				},
+				'slide-up': {
+					'0%': { transform: 'translateY(100%)' },
+					'100%': { transform: 'translateY(0)' }
+				},
+				'slide-down': {
+					'0%': { transform: 'translateY(0)' },
+					'100%': { transform: 'translateY(100%)' }
+				},
+				'fade-in': {
+					'0%': { opacity: '0' },
+					'100%': { opacity: '1' }
+				},
+				'fade-out': {
+					'0%': { opacity: '1' },
+					'100%': { opacity: '0' }
+				},
+				'scale-in': {
+					'0%': { transform: 'scale(0.9)', opacity: '0' },
+					'100%': { transform: 'scale(1)', opacity: '1' }
+				},
+				'pulse-glow': {
+					'0%, 100%': { 
+						boxShadow: '0 0 5px 0px rgba(30, 174, 219, 0.5)' 
+					},
+					'50%': { 
+						boxShadow: '0 0 20px 5px rgba(30, 174, 219, 0.8)' 
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'slide-left': 'slide-left 0.5s ease-in-out',
+				'slide-right': 'slide-right 0.5s ease-in-out',
+				'slide-up': 'slide-up 0.5s ease-in-out',
+				'slide-down': 'slide-down 0.5s ease-in-out',
+				'fade-in': 'fade-in 0.5s ease-in-out',
+				'fade-out': 'fade-out 0.5s ease-in-out',
+				'scale-in': 'scale-in 0.5s ease-in-out',
+				'pulse-glow': 'pulse-glow 2s ease-in-out infinite'
 			}
 		}
 	},

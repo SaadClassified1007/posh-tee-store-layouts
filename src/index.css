@@ -1,6 +1,9 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap');
 
 @layer base {
   :root {
@@ -97,5 +100,164 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
   }
+  
+  h1, h2, h3, h4 {
+    font-family: 'Montserrat', sans-serif;
+  }
+}
+
+/* Theme 1 - Dark Glassmorphic */
+.theme1 {
+  @apply bg-theme1-bg text-theme1-text;
+}
+
+.theme1-card {
+  @apply bg-black/30 backdrop-blur-md rounded-md border border-theme1-accent/30 shadow-md shadow-theme1-accent/10 transition-all duration-300;
+}
+
+.theme1-button {
+  @apply bg-theme1-accent text-white rounded-md px-4 py-2 font-medium shadow-md hover:shadow-lg hover:shadow-theme1-accent/20 transition-all duration-300 hover:-translate-y-1;
+}
+
+/* Theme 2 - Blue Gradient */
+.theme2 {
+  background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 100%);
+  @apply text-theme2-text;
+}
+
+.theme2-card {
+  @apply bg-white/10 backdrop-blur-lg rounded-xl border border-white/20 shadow-lg shadow-theme2-accent/10 transition-all duration-300;
+}
+
+.theme2-button {
+  background: linear-gradient(135deg, #0EA5E9 0%, #8B5CF6 100%);
+  @apply text-white rounded-xl px-5 py-2.5 font-medium shadow-lg transition-all duration-300 hover:scale-105;
+}
+
+/* Theme 3 - Subtle Orange */
+.theme3 {
+  @apply bg-theme3-bg text-theme3-text;
+}
+
+.theme3-card {
+  @apply bg-white rounded-lg shadow border border-theme3-accent/20 transition-all duration-300;
+}
+
+.theme3-button {
+  background: linear-gradient(135deg, #FEC6A1 0%, #FDE1D3 100%);
+  @apply text-theme3-text rounded-lg px-5 py-2.5 font-medium shadow-sm hover:shadow-md transition-all duration-300;
+}
+
+/* Transition Styles */
+.layout-container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.layout-slide-enter {
+  transform: translateX(100%);
+}
+
+.layout-slide-enter-active {
+  transform: translateX(0);
+  transition: transform 500ms ease-in-out;
+}
+
+.layout-slide-exit {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transform: translateX(0);
+}
+
+.layout-slide-exit-active {
+  transform: translateX(-100%);
+  transition: transform 500ms ease-in-out;
+}
+
+.layout-slide-up-enter {
+  transform: translateY(100%);
+}
+
+.layout-slide-up-enter-active {
+  transform: translateY(0);
+  transition: transform 500ms ease-in-out;
+}
+
+.layout-slide-up-exit {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transform: translateY(0);
+}
+
+.layout-slide-up-exit-active {
+  transform: translateY(-100%);
+  transition: transform 500ms ease-in-out;
+}
+
+.layout-fade-enter {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.layout-fade-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 500ms ease-in-out, transform 500ms ease-in-out;
+}
+
+.layout-fade-exit {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.layout-fade-exit-active {
+  opacity: 0;
+  transform: scale(1.1);
+  transition: opacity 500ms ease-in-out, transform 500ms ease-in-out;
+}
+
+/* Shared styles */
+.upload-area {
+  @apply flex flex-col items-center justify-center rounded-lg cursor-pointer transition-all duration-300;
+}
+
+.image-preview {
+  @apply relative flex items-center justify-center rounded-lg overflow-hidden transition-all duration-300;
+}
+
+.image-preview img {
+  @apply max-h-[400px] w-auto object-contain;
+}
+
+.info-text {
+  @apply text-sm text-center;
+}
+
+.error-text {
+  @apply text-red-500 text-sm;
+}
+
+/* Glassmorphism utilities */
+.glass-effect {
+  @apply backdrop-blur-md bg-black/20 border border-white/10;
+}
+
+.blue-glass {
+  @apply backdrop-blur-lg bg-blue-700/10 border border-blue-400/30;
+}
+
+.light-glass {
+  @apply backdrop-blur-sm bg-white/60 border border-gray-200;
 }
