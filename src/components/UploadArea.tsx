@@ -35,13 +35,13 @@ const UploadArea: React.FC<UploadAreaProps> = ({ onImageUpload, theme, className
         return;
       }
       
-      // Fix: Don't use 'new Image()' with the 'new' keyword
       const img = document.createElement('img') as HTMLImageElement;
       const objectUrl = URL.createObjectURL(file);
       
       img.onload = () => {
-        if (img.height <= img.width) {
-          toast.error("Only portrait images allowed");
+        // Updated: Allow any image except landscape (width > height)
+        if (img.width > img.height) {
+          toast.error("Landscape images are not allowed");
           URL.revokeObjectURL(objectUrl);
           resolve(false);
         } else {
@@ -103,7 +103,7 @@ const UploadArea: React.FC<UploadAreaProps> = ({ onImageUpload, theme, className
         )}
         
         <p className="text-center text-sm font-medium">
-          Only portrait images<br />(jpg, jpeg, png, webp, svg) allowed
+          Square or portrait images only<br />(jpg, jpeg, png, webp, svg)
         </p>
         
         {theme === 1 && (

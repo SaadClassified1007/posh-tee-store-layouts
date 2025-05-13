@@ -18,18 +18,18 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({ imageUrl, theme, className 
   if (!imageUrl) {
     return (
       <div className={`image-preview ${themeClasses[theme]} flex items-center justify-center p-6 ${className}`}>
-        <p className="text-center text-sm opacity-70">Image preview will appear here</p>
+        <p className="text-center text-sm opacity-70 font-medium">Image preview will appear here</p>
       </div>
     );
   }
 
   return (
     <div className={`image-preview ${themeClasses[theme]} p-2 ${className} animate-fade-in`}>
-      <div className="h-full flex items-center justify-center">
+      <div className="h-full flex items-center justify-center overflow-hidden">
         <img 
           src={imageUrl} 
           alt="T-shirt Preview" 
-          className="max-h-[400px] w-auto object-contain"
+          className="w-full h-full object-contain"
         />
       </div>
     </div>

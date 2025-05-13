@@ -16,18 +16,7 @@ const LayoutManager: React.FC = () => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.altKey && event.code === "KeyQ") {
         event.preventDefault();
-        
-        // Define transition effects based on which layout we're moving to
-        if (currentLayout === 0) {
-          setTransitionName("layout-slide"); // Layout 1 -> 2: slide left/right
-        } else if (currentLayout === 1) {
-          setTransitionName("layout-slide-up"); // Layout 2 -> 3: slide up/down
-        } else {
-          setTransitionName("layout-fade"); // Layout 3 -> 1: fade/scale
-        }
-        
-        // Cycle through layouts: 0 -> 1 -> 2 -> 0
-        setCurrentLayout((prev) => (prev + 1) % 3);
+        changeLayout();
       }
     };
 
@@ -36,6 +25,20 @@ const LayoutManager: React.FC = () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [currentLayout]);
+
+  const changeLayout = () => {
+    // Define transition effects based on which layout we're moving to
+    if (currentLayout === 0) {
+      setTransitionName("layout-slide"); // Layout 1 -> 2: slide left/right
+    } else if (currentLayout === 1) {
+      setTransitionName("layout-slide-up"); // Layout 2 -> 3: slide up/down
+    } else {
+      setTransitionName("layout-fade"); // Layout 3 -> 1: fade/scale
+    }
+    
+    // Cycle through layouts: 0 -> 1 -> 2 -> 0
+    setCurrentLayout((prev) => (prev + 1) % 3);
+  };
 
   const handleImageUpload = (file: File, url: string) => {
     setImageFile(file);
@@ -52,9 +55,9 @@ const LayoutManager: React.FC = () => {
   }, [imageUrl]);
 
   const layouts = [
-    <Layout1 key="layout1" imageUrl={imageUrl} onImageUpload={handleImageUpload} />,
-    <Layout2 key="layout2" imageUrl={imageUrl} onImageUpload={handleImageUpload} />,
-    <Layout3 key="layout3" imageUrl={imageUrl} onImageUpload={handleImageUpload} />,
+    <Layout1 key="layout1" imageUrl={imageUrl} onImageUpload={handleImageUpload} onLayoutChange={changeLayout} />,
+    <Layout2 key="layout2" imageUrl={imageUrl} onImageUpload={handleImageUpload} onLayoutChange={changeLayout} />,
+    <Layout3 key="layout3" imageUrl={imageUrl} onImageUpload={handleImageUpload} onLayoutChange={changeLayout} />,
   ];
 
   return (

@@ -100,10 +100,12 @@
   body {
     @apply bg-background text-foreground;
     font-family: 'Inter', sans-serif;
+    letter-spacing: 0.01em;
   }
   
   h1, h2, h3, h4 {
     font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.02em;
   }
 }
 
@@ -249,18 +251,26 @@
 
 .image-preview {
   @apply relative flex items-center justify-center rounded-lg overflow-hidden transition-all duration-300;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .image-preview {
+    width: 100%;
+    max-width: 30vw;
+  }
 }
 
 .image-preview img {
-  @apply max-h-[400px] w-auto object-contain;
+  @apply max-h-[400px] max-w-full object-contain;
 }
 
 .info-text {
-  @apply text-sm text-center;
+  @apply text-sm text-center font-medium tracking-wide;
 }
 
 .error-text {
-  @apply text-red-500 text-sm;
+  @apply text-red-500 text-sm font-medium;
 }
 
 /* Glassmorphism utilities */
@@ -274,4 +284,46 @@
 
 .light-glass {
   @apply backdrop-blur-sm bg-white/60 border border-gray-200;
+}
+
+/* Font utilities */
+.font-montserrat {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.font-inter {
+  font-family: 'Inter', sans-serif;
+}
+
+.tracking-tighter {
+  letter-spacing: -0.05em;
+}
+
+.tracking-tight {
+  letter-spacing: -0.025em;
+}
+
+.tracking-wide {
+  letter-spacing: 0.025em;
+}
+
+.tracking-wider {
+  letter-spacing: 0.05em;
+}
+
+.tracking-widest {
+  letter-spacing: 0.1em;
+}
+
+/* Text input styles */
+textarea {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.5;
+}
+
+.line-clamp-3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
 }
